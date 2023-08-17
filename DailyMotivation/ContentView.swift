@@ -8,86 +8,55 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var messageString = "Yo!"
+    @State private var messageString = "Namaste"
     
     var body: some View {
         
-        
-        VStack(spacing: 0) {
+        VStack {
             
-            Group {
-                Text("Iam a Text View")
-                Text("Iam a Text View")
-                Text("Iam a Text View")
-                Text("Iam a Text View")
-                Text("Iam a Text View")
-                
-                Group {
-                    Text("Iam a Text View")
-                    Text("Iam a Text View")
-                    Text("Iam a Text View")
-                    Text("Iam a Text View")
-                    Text("Iam a Text View")
-                }
-                
-            }
-            .font(.largeTitle)
-            .fontWeight(.heavy)
+            Spacer()
             
-           
-            
-            
-           
+            Image(systemName: "speaker.wave.3", variableValue: 0.67)
+                .resizable()
+                .scaledToFit()
+                .symbolRenderingMode(.multicolor)
+                .padding()
+                .background(Color(hue: 0.507, saturation: 0.265, brightness: 0.992))
+                .cornerRadius(30)
+                .shadow(color: .gray, radius: 30, x: 20, y: 20)
+                .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(.teal, lineWidth: 1)
+                )
+                .padding()
             
             Spacer()
             
             Text(messageString)
+                .foregroundColor(.pink)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
-                .minimumScaleFactor(0.5)
-                .multilineTextAlignment(.center)
-                .foregroundColor(.red)
-                .frame(height: 150)
-                .frame(maxWidth: .infinity)
-                .border(.orange, width: 1)
-                .padding()
             
             Spacer()
-            
-            Divider()
-                .background(.black)
-                .padding()
-                .frame(width: 150)
-            
-            
             
             HStack {
                 Button("Awesome") {
                     messageString = "You Are Awesome!"
-                    
                 }
-                .buttonStyle(.borderedProminent)
                 
                 Spacer()
                 
                 Button("Great") {
                     messageString = "You Are Great!"
-                    
                 }
-                .buttonStyle(.borderedProminent)
             }
-            //   .border(.purple, width: 5)
+            .tint(.accentColor)
+            .buttonStyle(.borderedProminent)
             .padding()
-            .tint(.blue)
-            
         }
-        .padding()
-        
-        
         
     }
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
