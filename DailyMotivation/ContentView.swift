@@ -15,22 +15,7 @@ struct ContentView: View {
         VStack {
             
             Spacer()
-            
-            Image(systemName: "speaker.wave.3", variableValue: 0.67)
-                .resizable()
-                .scaledToFit()
-                .symbolRenderingMode(.multicolor)
-                .padding()
-                .background(Color(hue: 0.507, saturation: 0.265, brightness: 0.992))
-                .cornerRadius(30)
-                .shadow(color: .gray, radius: 30, x: 20, y: 20)
-                .overlay(
-                RoundedRectangle(cornerRadius: 30)
-                    .stroke(.teal, lineWidth: 1)
-                )
-                .padding()
-            
-            Spacer()
+         
             
             Text(messageString)
                 .foregroundColor(.pink)
@@ -40,14 +25,16 @@ struct ContentView: View {
             Spacer()
             
             HStack {
-                Button("Awesome") {
-                    messageString = "You Are Awesome!"
-                }
-                
-                Spacer()
-                
-                Button("Great") {
-                    messageString = "You Are Great!"
+                Button("Show Message") {
+                    
+                    let message1 = "You Are Awesome!"
+                    let message2 = "You Are Great!"
+                    
+                    if messageString == message1  {
+                     messageString = message2
+                    } else {
+                        messageString = message1
+                    }
                 }
             }
             .tint(.accentColor)
