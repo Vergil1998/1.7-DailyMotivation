@@ -26,7 +26,7 @@ struct ContentView: View {
                 .padding()
             
             Spacer()
-         
+            
             
             Text(messageString)
                 .foregroundColor(.pink)
@@ -38,31 +38,34 @@ struct ContentView: View {
             HStack {
                 Button("Show Message") {
                     
-                   messageString = messages[messagesNumber]
+                    
+                    messageString = messages[Int.random(in: 0...messages.count-1)]
                     messagesNumber += 1
                     if messagesNumber == messages.count {
                         messagesNumber = 0
+                        
+                        
+                        
+                        
                     }
                     
                     
-                    //TODO: - update image number -
-                    imageName = "image\(imageNumber)"
-                    imageNumber += 1
-                    if imageNumber > 9 {
-                        imageNumber = 0
-                    }
                     
-                 //   imageName = (imageName == "image0" ? "image1" : "image0")
+                    imageName = "image\(Int.random(in: 0...9))"
                     
                 }
+                
+                
             }
-            .tint(.accentColor)
-            .buttonStyle(.borderedProminent)
-            .padding()
         }
-        
+        .tint(.accentColor)
+        .buttonStyle(.borderedProminent)
+        .padding()
     }
 }
+
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
