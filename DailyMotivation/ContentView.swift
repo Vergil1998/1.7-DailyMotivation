@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var messageString = "Namaste"
     @State private var imageName = ""
+    @State private var imageNumber = 0
     
     var body: some View {
         
@@ -41,8 +42,14 @@ struct ContentView: View {
                     
                     messageString = (messageString == message1 ? message2 : message1)
                     
+                    //TODO: - update image number -
+                    imageName = "image\(imageNumber)"
+                    imageNumber += 1
+                    if imageNumber > 9 {
+                        imageNumber = 0
+                    }
                     
-                    imageName = (imageName == "image0" ? "image1" : "image0")
+                 //   imageName = (imageName == "image0" ? "image1" : "image0")
                     
                 }
             }
