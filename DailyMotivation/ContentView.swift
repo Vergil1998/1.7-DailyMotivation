@@ -59,7 +59,7 @@ struct ContentView: View {
                     imageName = "image\(imageNumber)"
                     lastImageNumber = imageNumber
                   
-                    // wichtig für Playing Sounds Lesson
+                   
                     
                     var soundNumber: Int
                     repeat {
@@ -68,16 +68,8 @@ struct ContentView: View {
                     lastSoundNumber = soundNumber
                     let soundName = "sound\(soundNumber)"
                     
-                    guard let soundFile = NSDataAsset(name: soundName) else {
-                        print("😡 Could not read file named \(soundName)")
-                        return
-                    }
-                    do {
-                        audioPlayer = try AVAudioPlayer(data: soundFile.data)
-                        audioPlayer.play()
-                    } catch {
-                        print("😡 ERROR: \(error.localizedDescription) creating audioPlayer")
-                    }
+                    playSound(soundName: soundName)
+                   
                 }
                 
                 
@@ -87,6 +79,21 @@ struct ContentView: View {
         .buttonStyle(.borderedProminent)
         .padding()
     }
+    
+    
+    func playSound(soundName: String) {
+        guard let soundFile = NSDataAsset(name: soundName) else {
+            print("😡 Could not read file named \(soundName)")
+            return
+        }
+        do {
+            audioPlayer = try AVAudioPlayer(data: soundFile.data)
+            audioPlayer.play()
+        } catch {
+            print("😡 ERROR: \(error.localizedDescription) creating audioPlayer")
+        }
+    }
+    
 }
 
 
